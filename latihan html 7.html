@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="paragraf">Ini adalah paragraf yang bisa disembunyikan.</p>
+<button onclick="sembunyi()">Sembunyikan</button>
+
+<script>
+function sembunyi() {
+  const p = document.getElementById("paragraf");
+  p.style.display = "none";
+}
+
+<input type="text" id="inputText" placeholder="Ketik sesuatu..." oninput="update()">
+<p>Hasil: <span id="output"></span></p>
+function update() {
+  const tulisan = document.getElementById("inputText").value;
+  document.getElementById("output").innerText = tulisan;
+}
+</script>
+  
+  //"Onclick memerlukan aksi klik dari pengguna, sedangkan onmouseover terjadi hanya karena gerakan mouse yang diarahkan ke elemen."
+  //"Event penting karena memungkinkan website merespon tindakan pengguna, seperti mengetik, mengklik, atau mengarahkan mouse, sehingga halaman web dapat menjadi lebih interaktif dan dinamis."
+
+</body>
+</html>

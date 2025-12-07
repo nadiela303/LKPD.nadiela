@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array (Larikan Data)</title>
+    <p>Keterangan: <br>
+  1.  <br>
+  2. Array berisi 5 nama teman dan tampilkan semuanya menggunakan for. <br>
+  3. Array nilai siswa dan hitung rata-ratanya. <br></p>
+</head>
+<body>
+    <script>
+        let NamaTeman = ["2. Andi, ", "Budi, ", "Candra, ", "Denis, ", "Fajar."];
+        for (let i = 0; i < NamaTeman.length; i++) {
+            document.write(NamaTeman[i]);
+        }
+
+        let NilaiSiswa = [95, 80, 85, 75, 90, 90];
+        let RataRata = 0;
+        for (let o = 0; o < NilaiSiswa.length; o++) {
+            RataRata += NilaiSiswa[o];
+            let RataRataNilai = (RataRata / NilaiSiswa.length);
+        }
+        document.write("<br> 3. Nilai rata-ratanya adalah: " + (RataRata / NilaiSiswa.length));
+        /*
+        Apa keuntungan menggunakan array dibanding variabel terpisah?
+        =Array dapat menyimpan beberapa nilai sekaligus dalam satu struktur data yang berdekatan dalam memori, tidak seperti variabel biasa yang hanya menyimpan satu nilai.
+        Bagaimana cara menambahkan elemen baru ke array?
+        =Salah satu cara termudah untuk menambahkan elemen ke array di JavaScript adalah dengan menggunakan metode push(). push()Metode ini menambahkan satu atau beberapa elemen di akhir array dan mengembalikan panjang array yang baru.
+        */        
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-do List Project</title>
+    <style>
+        .selesai {
+            /* Efek garis coret dan warna abu-abu saat diklik */
+            text-decoration: line-through;
+            color: #888;
+        }
+        #daftar-tugas {
+            /* Hapus bullet point default dari <ul> */
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            cursor: pointer; /* Menunjukkan elemen bisa diklik */
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h2>Daftar Tugas Harian</h2>
+    
+    <input type="text" id="input-tugas" placeholder="Masukkan tugas baru...">
+    <button onclick="tambahTugas()">Tambah</button>
+    
+    <ul id="daftar-tugas">
+        </ul>
+
+    <script>
+        function tambahTugas() {
+            // 1. Ambil nilai input
+            let inputTugas = document.getElementById("input-tugas").value;
+            let daftarTugas = document.getElementById("daftar-tugas");
+
+            // Validasi: Pastikan input tidak kosong
+            if (inputTugas.trim() === "") {
+                alert("Tugas tidak boleh kosong!");
+                return;
+            }
+
+            // 2. Buat elemen <li> baru
+            let listItem = document.createElement("li");
+            listItem.textContent = inputTugas;
+            
+            // 3. Tambahkan Event Listener (Event Handling)
+            // Saat <li> ini di-klik, tambahkan/hapus kelas 'selesai'
+            listItem.addEventListener("click", function() {
+                listItem.classList.toggle("selesai");
+            });
+
+            // 4. Masukkan elemen baru ke dalam <ul>
+            daftarTugas.appendChild(listItem);
+            
+            // 5. Bersihkan input
+            document.getElementById("input-tugas").value = "";
+        }
+    
+    // pusing sama banyakk nyaa code
+    // Penyimpanan Lokal : Saya ingin agar daftar tugas tidak hilang ketika halaman web ditutup atau di-refresh.
+    </script>
+</body>
+</html>
+
+

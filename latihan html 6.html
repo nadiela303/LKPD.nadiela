@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>LKPD 6</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 24px;
+            background: #f8fafc;
+            color: #0f172a
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+            max-width: 700px
+        }
+
+        button {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            cursor: pointer;
+            margin-right: 8px
+        }
+
+        button:active {
+            transform: translateY(1px)
+        }
+
+        #container {
+            margin-top: 12px;
+            padding: 12px;
+            min-height: 80px;
+            border: 2px dashed #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc
+        }
+
+        .new-item {
+            margin: 6px 0;
+            padding: 8px;
+            border-radius: 6px;
+            background: #eef2ff
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>Contoh interaksi: ubah warna teks & tambah elemen</h2>
+        <p id="Paragraph">Klik tombol Ubah Warna Teks untuk mengganti warna </p>
+
+        <div>
+            <button id="changeColor">Ubah Warna Teks</button>
+            <button id="addElement">Tambah Elemen ke div</button>
+        </div>
+
+        <div id="container" aria-live="polite" aria-label="Wadah elemen baru">
+            <!-- elemen baru -->
+        </div>
+    </div>
+
+    <script>
+        const colors = ['#ef4444', '#0ea5e9', '#10b981', '#f59e0b', '#7c3aed'];
+        const paragraph = document.getElementById('Paragraph');
+        const changeColor = document.getElementById('changeColor');
+        const addElement = document.getElementById('addElement');
+        const container = document.getElementById('container');
+
+        const originalColor = getComputedStyle(paragraph).color;
+        let colorIndex = -1;
+
+        changeColor.addEventListener('click', () => {
+
+            colorIndex = (colorIndex + 1) % (colors.length + 1);
+            if (colorIndex === colors.length) {
+                paragraph.style.color = originalColor;
+                changeColor.textContent = 'Ubah Warna Teks';
+            } else {
+                paragraph.style.color = colors[colorIndex];
+                changeColor.textContent = 'Warna: ' + colors[colorIndex];
+            }
+        });
+
+
+        let itemCount = 0;
+        addElement.addEventListener('click', () => {
+            itemCount += 1;
+            const el = document.createElement('div');
+            el.className = 'new-item';
+            el.textContent = 'Elemen baru #' + itemCount + ' — dibuat pada ' + new Date().toLocaleTimeString();
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = 'Hapus';
+            removeBtn.style.marginLeft = '10px';
+            removeBtn.addEventListener('click', () => {
+                el.remove();
+            });
+
+            el.appendChild(removeBtn);
+            container.appendChild(el);
+
+
+            el.setAttribute('tabindex', '-1');
+            el.focus();
+        });
+    </script>
+
+    <!--
+Apa fungsi document.getElementById()?
+jawab=digunakan untuk mengambil elemen dari html dengan id
+Bagaimana cara menambah elemen baru ke halaman?
+jawab=menggunakan metode appendChild(). 
+
+ -->
+</body>
+
+</html>
